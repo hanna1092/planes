@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Baggage - Flight Booking{% endblock %}
+
+{% block main %}
+<div class="section-header">
+    <h1>Baggage</h1>
+</div>
+
+<div class="baggage-info container">
+    <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-backpack-fill" viewBox="0 0 16 16">
+            <path d="M5 13v-3h4v.5a.5.5 0 0 0 1 0V10h1v3z"/>
+            <path d="M6 2v.341C3.67 3.165 2 5.388 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8a6 6 0 0 0-4-5.659V2a2 2 0 1 0-4 0m2-1a1 1 0 0 1 1 1v.083a6 6 0 0 0-2 0V2a1 1 0 0 1 1-1m0 3a4 4 0 0 1 3.96 3.43.5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14A4 4 0 0 1 8 4M4.5 9h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5"/>
+        </svg>
+        Hand Baggage
+    </h2>
+    <p>
+        Here you will find all necessary information regarding carry-on baggage.
+        Hand baggage is the luggage you can take with you into the aircraft cabin.
+        Below are details about its dimensions, weight, and regulations.
+    </p>
+    <ul>
+        <li><strong>Dimensions:</strong> Typically up to 55 x 40 x 23 cm.</li>
+        <li><strong>Weight:</strong> Usually up to 8-10 kg.</li>
+        <li><strong>Placement:</strong> Must fit in the overhead compartment or under the seat in front of you.</li>
+        <li><strong>Prohibited items:</strong> Sharp objects, liquids over a certain volume, etc., are not allowed in carry-on baggage.</li>
+        <li><strong>Additional information:</strong> Items such as laptops, cosmetics, etc., may have specific requirements.</li>
+    </ul>
+</div>
+
+<div class="checked-baggage-info container">
+    <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-luggage-fill" viewBox="0 0 16 16">
+            <path d="M2 1.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V5h.5A1.5 1.5 0 0 1 8 6.5V7H7v-.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5H4v1H2.5v.25a.75.75 0 0 1-1.5 0v-.335A1.5 1.5 0 0 1 0 13.5v-7A1.5 1.5 0 0 1 1.5 5H2zM3 5h2V2H3z"/>
+            <path d="M2.5 7a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0v-5a.5.5 0 0 1 .5-.5m10 1v-.5A1.5 1.5 0 0 0 11 6h-1a1.5 1.5 0 0 0-1.5 1.5V8H8v8h5V8zM10 7h1a.5.5 0 0 1 .5.5V8h-2v-.5A.5.5 0 0 1 10 7M5 9.5A1.5 1.5 0 0 1 6.5 8H7v8h-.5A1.5 1.5 0 0 1 5 14.5zm9 6.5V8h.5A1.5 1.5 0 0 1 16 9.5v5a1.5 1.5 0 0 1-1.5 1.5z"/>
+        </svg>
+        Checked Baggage
+    </h2>
+    <p>
+        Here you will find all necessary information regarding checked baggage.
+        Checked baggage is transported in the aircraft's hold and can be purchased in addition to carry-on baggage.
+    </p>
+    <ul>
+        <li><strong>Dimensions:</strong> Typically up to 158 cm (total length + width + height).</li>
+        <li><strong>Weight:</strong> Depending on the airline, typically up to 20-23 kg per piece of luggage.</li>
+        <li><strong>Fees:</strong> Airlines often charge fees for checked baggage.</li>
+        <li><strong>Prohibited items:</strong> Similar to carry-on baggage, there are restrictions on certain items.</li>
+        <li><strong>Additional information:</strong> Special procedures may be required during check-in and baggage claim.</li>
+    </ul>
+</div>
+{% endblock %}

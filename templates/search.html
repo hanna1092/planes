@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block main %}
+  <h2>Search your flight</h2>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {% if len(base_airports) > 30%}
+        <a href='/search'></a>
+    {% else %}
+    <p>
+    {% if len(base_airports) > 1 %}
+        <p><b>Choose one base airport and type it down</b></p>
+        {% for base in base_airports %}
+            <p>{{base}}, {{get_iata_code(base)}}</p>
+        {% endfor %}
+    {% endif %}
+      {{ form.base_.label }}<br>
+      {{ form.base_(size=32) }}<br>
+    </p>
+    <p>
+    {% if len(to_airports) > 1 %}
+    <p><b>Choose one destination airport and type it down</b></p>
+        {% for to in to_airports %}
+            <p>{{to}}, {{list(get_iata_code(to).values())[0]}}</p>
+        {% endfor %}
+    {% endif %}
+      {{ form.to.label }}<br>
+      {{ form.to(size=32) }}<br>
+    </p>
+    <p>
+        {{ form.departure.label }}<br>
+        {{ form.departure(size=32) }}<br>
+    </p>
+    <p>
+        {{ form.return_departure.label }}<br>
+        {{ form.return_departure(size=32) }}<br>
+    </p>
+    <p>
+        {{ form.back.label }}<br>
+        {{ form.back(size=32) }}<br>
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Seats{% endblock %}
+{% block content %}
+<script>
+  function startReservationTimer() {
+      var startTime = new Date().getTime();
+
+      var endTime = startTime + (15 * 60 * 1000); 
+
+      var timerInterval = setInterval(function() {
+          var now = new Date().getTime();
+
+          var timeLeft = endTime - now;
+
+        
+          if (timeLeft <= 0) {
+              clearInterval(timerInterval); 
+              alert("Time's up! Please start your reservation again."); 
+              window.location.href = '/';
+          } else {
+              var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+              document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s remaining";
+          }
+      }, 1000); 
+  }
+  window.onload = function() {
+      startReservationTimer();
+  };
+</script>
+
+<div class="container">
+  <div id="timer"></div>
+    <div class="card text-center">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <p class="nav-link disabled" >Step 1</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link disabled">Step 2</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link active">Step 3</p>
+            </li>
+            <li class="nav-item">
+                <p class="nav-link disabled">Step 4</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+  <div class="seats">
+  <h2>Choose your seat {{fromCode}} - {{destinationCode}}</h2>
+  <form method="POST" action="">
+    <p>
+    {% if seats %}
+    <div class="container mt-5">
+        <div class="legend">
+          <h1>Legend</h1>
+          <div class="spans">
+          <div><span style="background-color: #198754"></span> Free</div>
+          <div><span style="background-color: #adb5bd"></span> Reserved</div>
+          </div>
+      </div>
+        <div class="cockpit">
+        </div>
+        <div class="plane">
+        {% for seat_row in seats %}
+            <div class="row justify-content-center mb-3">
+                {% for seat in seat_row %}
+                {% if loop.index == 4 %}
+                    <div class="col-1 aisle"></div>  
+                {% endif %}
+                    <div class="col-auto text-center">
+                        {% if seat in taken_seats %}
+                            <a href="{{url_for('reservation.make_reservation2', 
+                            fromAirport=fromAirport,
+                            destinationAirport=destinationAirport, 
+                            fromCode=fromCode, 
+                            destinationCode=destinationCode,
+                            seat=seat,
+                            airlineCode=airlineCode, 
+                            departure=departure,
+                            return_departure=return_departure,
+                            back=back )}}" class="btn btn-secondary disabled"><b>{{ seat }}</b></a>
+                        {% else %}
+                            <a href="{{url_for('reservation.make_reservation2', 
+                            fromAirport=fromAirport,
+                            destinationAirport=destinationAirport, 
+                            fromCode=fromCode, 
+                            destinationCode=destinationCode,
+                            seat=seat,
+                            airlineCode=airlineCode, 
+                            departure=departure,
+                            return_departure=return_departure,
+                            back=back )}}" class="btn btn-success"><b>{{ seat }}</b></a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No seats available.</p></div>
+    {% endif %}
+  </form></div>
+</div>
+
+
+{% endblock %}

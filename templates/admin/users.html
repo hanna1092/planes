@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container">
+    <h1>All users</h1>
+    <div class="row">
+        {% for user in users %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.name }} {{ user.surname }}</h5>
+                    <p class="card-text">
+                        <strong>Userame:</strong> {{ user.username }}<br>
+                        <strong>Email:</strong> {{ user.email }}<br>
+                        <strong>ID Document Number:</strong> {{ user.numberOfId }}<br>
+                        <strong>ID:</strong> {{ user.id }}<br>
+                        <strong>Role:</strong> {{ user.role }}<br>
+                        <!-- <strong>Number of reservations:</strong> {{ user.timeOfDeparture }}<br> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

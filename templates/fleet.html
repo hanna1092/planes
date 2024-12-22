@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Fleet - Flight Booking{% endblock %}
+
+{% block main %}
+<div class="aircraft-container mt-5">
+    <h1 class="mb-2 text-center"><b>Our Fleet</b></h1>
+    <p class="lead mb-20 text-center" style="font-size: 15px;">Discover the variety and reliability of our fleet. Below we present a few aircraft that operate on selected routes.</p>
+
+    <div class="fleet-section">
+        <h2 class="mb-3 text-center"><b>On Short Distances</b></h2>
+        <div class="aircraft mb-4">
+            <img src="https://www.rynek-lotniczy.pl//img/20221009010746LOTE175SPLIPkopia.jpg_678-443.jpg" alt="Embraer E175" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3>Embraer E175</h3>
+                <p>The Embraer E175 is a regional jet known for its efficiency and reliability on short-haul routes.</p>
+            </div>
+        </div>
+        <div class="aircraft mb-4">
+            <img src="https://www.aerospace-technology.com/wp-content/uploads/sites/15/2019/05/3.jpg" alt="Bombardier CRJ900" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3>Bombardier CRJ900</h3>
+                <p>The Bombardier CRJ900 offers a comfortable and nice ride for passengers on regional flights.</p>
+            </div>
+        </div>
+        <div class="aircraft mb-4">
+            <img src="https://aircraft.airbus.com/sites/g/files/jlcbta126/files/styles/airbus_1130x1130/public/2021-10/Airbus%20A220-100%204.webp?itok=rSPZPJrr" alt="Airbus A220-100" class="aircraft-image">
+            <div class="aircraft-info">
+                <h3>Airbus A220-100</h3>
+                <p>The Airbus A220-100 combines performance and modern technology, ideal for short distances.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Long Distance Section -->
+    <div class="fleet-section">
+        <h2 class="mb-3 text-center"><b>On Long Distances</b></h2>
+        <div class="aircraft mb-4 flex-reverse">
+            <div class="aircraft-info">
+                <h3>Boeing 787 Dreamliner</h3>
+                <p>The Boeing 787 Dreamliner is known for its fuel efficiency and passenger comfort on long-haul flights.</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Boeing_787_N1015B_ANA_Airlines_%2827611880663%29_%28cropped%29.jpg/360px-Boeing_787_N1015B_ANA_Airlines_%2827611880663%29_%28cropped%29.jpg" alt="Boeing 787 Dreamliner" class="aircraft-image">
+        </div>
+        <div class="aircraft mb-4 flex-reverse">
+            <div class="aircraft-info">
+                <h3>Airbus A350</h3>
+                <p>The Airbus A350 offers advanced aerodynamics and technology, making it perfect for long distances.</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/A350_First_Flight_-_Low_pass_02.jpg/360px-A350_First_Flight_-_Low_pass_02.jpg" alt="Airbus A350" class="aircraft-image">
+        </div>
+        <div class="aircraft mb-4 flex-reverse">
+            <div class="aircraft-info">
+                <h3>Boeing 777</h3>
+                <p>The Boeing 777 is a long-range, wide-body aircraft that provides a smooth and comfortable journey.</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cathay_Pacific_Boeing_777-200%3B_B-HNL%40HKG.jpg/450px-Cathay_Pacific_Boeing_777-200%3B_B-HNL%40HKG.jpg" alt="Boeing 777" class="aircraft-image">
+        </div>
+    </div>
+</div>
+{% endblock %}

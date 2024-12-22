@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+{% endblock %}
+
+{% block title %}Contact Us - Flight Booking{% endblock %}
+
+{% block main %}
+<div class="contact-header text-center">
+    <h1><b>Contact</b></h1>
+</div>
+
+<div class="contact-info container text-center">
+    <p>Didn't find the answer to your question? We are happy to help. Contact us through the following methods:</p>
+    <ul class="list-unstyled">
+        <li><i class="bi bi-telephone-fill"></i> <strong>Phone: </strong> +123 456 789</li>
+        <li><i class="bi bi-envelope-fill"></i> <strong>Email: </strong> flightbooking@op.pl</li>
+        <li><i class="bi bi-geo-alt-fill"></i> <strong>Address:</strong> 123 Aviation Street, City, Country</li>
+    </ul>
+</div>
+
+<div class="contact-form container text-center">
+    <h2>Contact Form</h2>
+    <p>You can also contact us using the form below:</p>
+    <form>
+        <div class="mb-3 row justify-content-center">
+            <label for="name" class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="name" placeholder="Your Name">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="email" class="col-sm-2 col-form-label">Email address:</label>
+            <div class="col-sm-4">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="message" class="col-sm-2 col-form-label">Message:</label>
+            <div class="col-sm-4">
+                <textarea class="form-control" id="message" rows="3" placeholder="Your Message"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

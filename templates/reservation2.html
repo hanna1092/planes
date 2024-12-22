@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Making reservation{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <p class="nav-link disabled" >Step 1</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link disabled">Step 2</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link disabled">Step 3</p>
+        </li>
+        <li class="nav-item">
+            <p class="nav-link active">Step 4</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="reservation2">
+  <div class="form-content">
+  <h2 class="my-4 text-center">Making reservation</h2>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <label for="luggage">{{ form.luggage.label }}</label><br>
+        {{ form.luggage(class="form-control", size=32) }}<br>
+    </div>
+    <div class="form-group">
+        <label for="insurance">{{ form.insurance.label }}</label><br>
+        {{ form.insurance(class="form-control", size=32) }}<br>
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary w-100") }}
+    </div></div></form></div>
+{% endblock %}

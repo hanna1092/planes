@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container">
+    <h1>All Flights</h1>
+    <div class="row">
+        {% for flight in flights %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-info mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ flight.flightNumber }}</h5>
+                    <p class="card-text">
+                        <strong>From:</strong> {{ flight.fromAirport }} [{{ flight.fromCode }}]<br>
+                        <strong>To:</strong> {{ flight.destinationAirport }} [{{ flight.destinationCode }}]<br>
+                        <strong>Airline code:</strong> {{ flight.airlineCode }}<br>
+                        <strong>Departure:</strong> {{ flight.timeOfDeparture }}<br>
+                        <a href="{{ url_for('admin.flight', number=flight.flightNumber) }}">More</a>
+                        <!-- <strong>Number of reservations:</strong> {{ flight.timeOfDeparture }}<br> -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

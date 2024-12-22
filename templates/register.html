@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block main %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="register-container">
+        <h2 class="register-heading">Register</h2>
+        <form method="POST" action="{{ url_for('auth.register') }}">
+          {{ form.hidden_tag() }}
+          <div class="mb-3">
+            {{ form.name.label }}
+            {{ form.name(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.surname.label }}
+            {{ form.surname(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.username.label }}
+            {{ form.username(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.email.label }}
+            {{ form.email(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.numberOfId.label }}
+            {{ form.numberOfId(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.password.label }}
+            {{ form.password(size=32, class="form-control") }}
+          </div>
+          <div class="mb-3">
+            {{ form.confirm.label }}
+            {{ form.confirm(size=32, class="form-control") }}
+          </div>
+          {% if current_user.is_authenticated and current_user.role == "admin" %}
+          <div class="mb-3">
+            {{ form.role.label }}
+            {{ form.role() }}
+          </div>
+          {% endif %}
+          <div class="mb-3">
+            {{ form.submit(class="btn btn-primary btn-lg") }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

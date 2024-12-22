@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Select Airline
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <p class="nav-link active" >Step 1</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link disabled">Step 2</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link disabled">Step 3</p>
+            </li>
+            <li class="nav-item">
+                <p class="nav-link disabled">Step 4</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="select_airline">
+    {% if airlines %}
+    <div class="content">
+    <h1>Select an Airline</h1>
+    <ol class="list-group list-group-numbered">
+        {% for airline in airlines %}
+            {% set airline_code = airline_code(airline) %}   
+            <li class="list-group-item">   
+            <a href="{{ url_for('reservation.select_airline', 
+            airline_code=airline_code, 
+            base_code=base_code, 
+            to_code=to_code, 
+            fromAirport = fromAirport, 
+            destinationAirport = destinationAirport, 
+            departure = departure.isoformat(), 
+            return_departure=return_departure.isoformat(), back=back )}}">{{ airline }}</a></li>
+        {% endfor %}</ol>
+    </div></div></div>
+    {% else %}
+    <div class="content">
+    <h1>Sorry, we don't fly that direction</h1>
+    <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+    </svg>Back to search</a></div>
+    {% endif %}</div>
+{% endblock %}
+

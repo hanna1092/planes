@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <p class="nav-link disabled" >Step 1</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link active">Step 2</p>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link disabled">Step 3</p>
+        </li>
+        <li class="nav-item">
+            <p class="nav-link disabled">Step 4</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <div class="reservation_data">
+        <div class="form-content">
+            <h2 class="my-4 text-center">Making reservation</h2>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(size=32, class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.surname.label(class="form-label") }}
+                    {{ form.surname(size=32, class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(size=32, class="form-control") }}
+                </div>
+                <div class="mb-3">
+                    {{ form.numberOfId.label(class="form-label") }}
+                    {{ form.numberOfId(size=32, class="form-control") }}
+                </div>
+                {{ form.submit(class="btn btn-primary w-100") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

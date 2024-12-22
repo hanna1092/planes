@@ -1,0 +1,39 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: rgb(32, 226, 229)
+}
+
+.navbar a {
+  color: white;
+  display:flex;
+  font-weight: bold;
+}
+
+.container {
+  flex: 1;
+  padding: 20px;
+}
+
+.custom-form {
+  background-color: rgb(32, 226, 229);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-container {
+  width: 700px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgb(32, 226, 229);
+  border-radius: 5px;
+}
+
+

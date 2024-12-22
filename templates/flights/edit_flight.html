@@ -1,0 +1,37 @@
+<!-- templates/flights/edit_flight.html -->
+
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  <div class="edit_flight">
+  <h1>Edit Flight - {{ flight.flightNumber }}</h1>
+  <form method="post">
+    {{ form.hidden_tag() }}
+  
+    <div class="mb-3">
+      {{ form.fromAirport.label }} {{ form.fromAirport(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.destinationAirport.label }} {{ form.destinationAirport(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.fromCode.label }} {{ form.fromCode(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.destinationCode.label }} {{ form.destinationCode(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.airlineCode.label }} {{ form.airlineCode(class="form-control") }}
+    </div>
+    <div class="mb-3">
+      {{ form.flightNumber.label }} {{ form.flightNumber(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.delay.label }} 
+        {{ form.delay() }}
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+  </div></div>
+{% endblock %}

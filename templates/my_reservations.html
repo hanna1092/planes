@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+My reservations
+{% endblock %}
+
+{% block main %}
+<div class="my_reservations">
+    <h1>My reservations</h1>
+    <div class="row">
+        {% for reservation in reservations %}
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Flight Number: {{ reservation.flightNumber }}</h5>
+                    <p class="card-text">
+                        <strong>From Airport:</strong> {{ reservation.fromAirport }}<br>
+                        <strong>Destination Airport:</strong> {{ reservation.destinationAirport }}<br>
+                        <strong>From Code:</strong> {{ reservation.fromCode }}<br>
+                        <strong>Destination Code:</strong> {{ reservation.destinationCode }}<br>
+                        <strong>Airline Code:</strong> {{ reservation.airlineCode }}<br>
+                        <strong>Time of Departure:</strong> {{ reservation.timeOfDeparture }}<br>
+                        <strong>Seat:</strong> {{ reservation.seat }}<br>
+                        <strong>Luggage:</strong> {{ reservation.luggage }}<br>
+                        <strong>Insurance:</strong> {{ reservation.insurance }}
+                    </p>
+                    <a href="{{ url_for('reservation.edit_reservation', id=reservation.id) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ url_for('reservation.delete_reservation', id=reservation.id) }}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+flask_login
+flask
+flask_sqlalchemy
+werkzeug
+sqlalchemy
+flask_wtf
+datetime
+flask_bootstrap
+pandas
+bs4
+requests

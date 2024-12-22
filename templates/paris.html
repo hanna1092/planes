@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block styles %}
+{{ super() }}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
+{% block title %}Visit Paris - Flight Booking{% endblock %}
+
+{% block main %}
+<div class="forms">
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        {% if len(base_airports) > 30%}
+            <a href='/'></a>
+        {% else %}
+        {% if len(base_airports) > 1 %}
+        <div class="alert alert-dark" role="alert">
+                <b>Choose one base airport and type it down</b>
+                <ul class="list-group list-group-flush">
+                    {% for base in base_airports %}
+                      <p>{{base}}, {{get_iata_code(base)}}</p>
+                    {% endfor %}
+                </ul>
+        </div>
+        {% endif %}
+        {% if len(to_airports) > 1 %}
+        <div class="alert alert-dark" role="alert">
+        <b>Choose one destination airport and type it down</b>
+        <ul class="list-group list-group-flush">
+        {% for to in to_airports %}
+            <p>{{to}}, {{list(get_iata_code(to).values())[0]}}</p>
+        {% endfor %}</ul>
+        </div>
+    {% endif %}
+    <div class="form-header text-center">
+        <h1><b>Search for your dream flight</b></h1>
+    </div>
+    
+    <div class="form d-flex justify-content-center">
+        <div class="search-form col-md-6" style="border: 3px solid #ccc; padding: 20px; border-radius: 10px;">
+                <div class="mb-3 row form-row">
+                    <div class="col">
+                        <b>{{ form.base_.label(class="form-label") }}</b>
+                        {{ form.base_(size=32, class="form-control") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.to.label(class="form-label") }}</b>
+                        {{ form.to(size=32, class="form-control", value="Charles De Gaulle") }}
+                    </div>
+                    <div class="date">
+                    <div class="col">
+                        <b>{{ form.departure.label(class="form-label") }}</b>
+                        {{ form.departure(size=32, class="form-control") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.return_departure.label(class="form-label") }}</b>
+                        {{ form.return_departure(size=32, class="form-control") }}
+                    </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <b><label for="luggage">{{ form.back.label }}</label></b>
+                            {{ form.back(class="form-control", size=32) }}
+                        </div>
+                    </div>
+                    {{ form.submit(class="btn btn-primary w-100") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>{% endif %}
+<div class="container mt-5 mb-4">
+    <div class="row align-items-center"> 
+        <div class="col-md-6">
+            <div class="text-container">
+                <h1 class="text-inspiration">Discover Paris</h1>
+                <p class="text-inspiration" style="font-size: 15px;">
+                    Paris, the capital of France, is renowned for its art, fashion, gastronomy, and culture. The city is situated on the River Seine in northern France. Paris is also known for its iconic landmarks such as the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and the Champs-Élysées.
+                </p>
+                <p class="text-inspiration" style="font-size: 15px;">
+                    Key attractions include the romantic Montmartre district, bustling markets, and charming cafes. Whether you're interested in art, history, fashion, or cuisine, Paris offers a unique blend of experiences.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="carouselOslo" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.immediate.co.uk/production/volatile/sites/49/2023/10/img1fAgZh-632d9e4.jpg?quality=90&webp=true&crop=0px,0px,1200px,799px&resize=1200,800" class="d-block w-100 carousel-img" alt="Oslo image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://um.warszawa.pl/documents/56602/42372047/Pary%C5%BC+4.jpg/9b53973c-2266-2592-1516-1533776ae173?version=1.0&t=1649675488682&imagePreview=1" class="d-block w-100 carousel-img" alt="Oslo image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://ocdn.eu/pulscms-transforms/1/6mYk9kpTURBXy84MzE5NjY1ZDkzYThhMGViNzY2MTA3ODVmZjNkOTdhNS5qcGeSlQMBOM0D580CMZMFzQRWzQIc3gABoTAG" class="d-block w-100 carousel-img" alt="Oslo image 3">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselOslo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselOslo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

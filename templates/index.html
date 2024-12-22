@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript">
+    function showText() {
+        var overlayText = document.getElementById('overlayText');
+        overlayText.classList.add('show');
+    }
+</script>
+{% endblock %}
+
+{% block title %}Home - Flight Booking{% endblock %}
+
+{% block main %}
+{% if current_user.role == 'admin' %}
+    <div class="admin-panel">
+        <a href="{{ url_for('admin.panel') }}" class="btn btn-primary">Admin Panel</a>
+    </div>
+{% else %}
+<div class="forms">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {% if len(base_airports) > 30%}
+            <a href='/'></a>
+        {% else %}
+        {% if len(base_airports) > 1 %}
+        <div class="alert alert-dark" role="alert">
+                <b>Choose one base airport and type it down</b>
+                <ul class="list-group list-group-flush">
+                    {% for base in base_airports %}
+                      <p>{{base}}, {{get_iata_code(base)}}</p>
+                    {% endfor %}
+                </ul>
+        </div>
+        {% endif %}
+        {% if len(to_airports) > 1 %}
+        <div class="alert alert-dark" role="alert">
+        <b>Choose one destination airport and type it down</b>
+        <ul class="list-group list-group-flush">
+        {% for to in to_airports %}
+            <p>{{to}}, {{list(get_iata_code(to).values())[0]}}</p>
+        {% endfor %}</ul>
+        </div>
+    {% endif %}
+    <div class="form-header text-center">
+        <h1><b>Search for your dream flight</b></h1>
+    </div>
+    
+    <div class="form d-flex justify-content-center">
+        <div class="search-form col-md-6" style="border: 3px solid #ccc; padding: 20px; border-radius: 10px;">
+                <div class="mb-3 row form-row">
+                    <div class="col">
+                        <b>{{ form.base_.label(class="form-label") }}</b>
+                        {{ form.base_(size=32, class="form-control") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.to.label(class="form-label") }}</b>
+                        {{ form.to(size=32, class="form-control") }}
+                    </div>
+                    <div class="date">
+                    <div class="col">
+                        <b>{{ form.departure.label(class="form-label") }}</b>
+                        {{ form.departure(size=32, class="form-control") }}
+                    </div>
+                    <div class="col">
+                        <b>{{ form.return_departure.label(class="form-label") }}</b>
+                        {{ form.return_departure(size=32, class="form-control") }}
+                    </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <b><label for="luggage">{{ form.back.label }}</label></b>
+                            {{ form.back(class="form-control", size=32) }}
+                        </div>
+                    </div>
+                    {{ form.submit(class="btn btn-primary w-100") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>{% endif %}
+
+<div class="video-container mt-4">
+    <video autoplay muted id="flightVideo" onended="showText()">
+        <source src="{{ url_for('static', filename='airplane_takeoff.mp4') }}" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div id="overlayText" class="overlay-text">
+        <p>Discover the world with us</p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-3" id="inspiration">
+    <div class="inspiration">
+        <div class="col-md-4 mb-4">
+            <div class="article-card bg-info">
+                <div class="card-img-top mb-2">
+                    <img src="https://ocdn.eu/pulscms-transforms/1/3rVk9kpTURBXy84NDRiZTc2NDAwMmRhOThlOWI3ZDIwYTdjOTAzY2Q3Zi5qcGeTlQMAzF3NA-jNAjOTBc0DFM0BvJMJpjIzZjcwNAbeAAGhMAY/oslo.avif" class="img-fluid" alt="Oslo image">
+                </div>
+                <h3>Oslo awaits!</h3>
+                <p class="lead">Discover the beauty of Oslo, Norway's capital city.</p>
+                <a href="{{ url_for('oslo') }}" class="btn btn-light btn-lg mb-3">Book a flight to Oslo</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="article-card bg-info">
+                <div class="card-img-top mb-2">
+                    <img src="https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Spain/Majorca/majorca-destination-guide-main.jpg?imwidth=960" class="img-fluid" alt="Majorca image">
+                </div>
+                <h3>Discover the magic of Majorca</h3>
+                <p class="lead">Check out our flight deals to Majorca and plan your vacation!</p>
+                <a href="{{ url_for('majorca') }}" class="btn btn-light btn-lg mb-3">Book a flight to Majorca</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="article-card bg-info">
+                <div class="card-img-top mb-2">
+                    <img src="https://fly.pl/wp-content/uploads/2014/06/Francja-Paryz.jpg" class="img-fluid" alt="Paris image">
+                </div>
+                <h3>Visit Paris</h3>
+                <p class="lead">Get on a plane to France and experience the unique charm of Paris</p>
+                <a href="{{ url_for('paris') }}" class="btn btn-light btn-lg mb-3">Book a flight to Paris</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="partner-container" id="partner-container">
+    <h1><b>Our collaboration</b></h1>
+    <div class="partner-discount-info">
+        <p>Explore our partner deals and enjoy exclusive discounts!</p>
+    </div>
+    <div class="partner-logos">
+        <a href="https://www.booking.com/index.pl.html">
+            <img src="https://rentownarenowacja.pl/wp-content/uploads/2019/11/booking-1-1059x650.jpg" alt="Hotel Logo">
+        </a>
+        <a href="https://www.autoeurope.com/car-rental/">
+            <img src="https://media.product.which.co.uk/prod/images/900_450/gm-ca307079-0b6f-4339-a23f-3e669b47321f-autoeuropelogoadvice-header.jpg" alt="Car Rental Logo">
+        </a>
+        <a href="https://www.hilton.com/pl/">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/HiltonHotelsLogo.svg/188px-HiltonHotelsLogo.svg.png" alt="Car Rental Logo">
+        </a>
+        <a href="https://www.bp.com/">
+            <img src="https://pbs.twimg.com/profile_images/1572458093073629185/9jpq6Q6T_400x400.jpg" alt="Car Rental Logo">
+        </a>
+
+    </div>
+</div>
+{% endif %}
+{% endblock %}
